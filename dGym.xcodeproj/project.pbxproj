@@ -6,14 +6,45 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		BE9D51922DAD5548000506BE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE9D518C2DAD5548000506BE /* Preview Assets.xcassets */; };
+		BE9D51932DAD5548000506BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE9D518E2DAD5548000506BE /* Assets.xcassets */; };
+		BE9D51942DAD5548000506BE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9D518F2DAD5548000506BE /* ContentView.swift */; };
+		BE9D51952DAD5548000506BE /* dGymApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9D51902DAD5548000506BE /* dGymApp.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		BE9D517B2DAD5520000506BE /* dGym.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dGym.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE9D518C2DAD5548000506BE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BE9D518E2DAD5548000506BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BE9D518F2DAD5548000506BE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BE9D51902DAD5548000506BE /* dGymApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dGymApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		BE9D517D2DAD5520000506BE /* dGym */ = {
+		BE9D51962DAD55E7000506BE /* Views */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = dGym;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BE9D519A2DAD55F3000506BE /* Utils */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		BE9D519B2DAD55FA000506BE /* Storage */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		BE9D519C2DAD5601000506BE /* ViewModels */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		BE9D519E2DAD560F000506BE /* Models */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,7 +63,7 @@
 		BE9D51722DAD5520000506BE = {
 			isa = PBXGroup;
 			children = (
-				BE9D517D2DAD5520000506BE /* dGym */,
+				BE9D51912DAD5548000506BE /* dGym */,
 				BE9D517C2DAD5520000506BE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +74,30 @@
 				BE9D517B2DAD5520000506BE /* dGym.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BE9D518D2DAD5548000506BE /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				BE9D518C2DAD5548000506BE /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BE9D51912DAD5548000506BE /* dGym */ = {
+			isa = PBXGroup;
+			children = (
+				BE9D51902DAD5548000506BE /* dGymApp.swift */,
+				BE9D518F2DAD5548000506BE /* ContentView.swift */,
+				BE9D518E2DAD5548000506BE /* Assets.xcassets */,
+				BE9D519E2DAD560F000506BE /* Models */,
+				BE9D51962DAD55E7000506BE /* Views */,
+				BE9D519C2DAD5601000506BE /* ViewModels */,
+				BE9D519B2DAD55FA000506BE /* Storage */,
+				BE9D519A2DAD55F3000506BE /* Utils */,
+				BE9D518D2DAD5548000506BE /* Preview Content */,
+			);
+			path = dGym;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -61,7 +116,11 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				BE9D517D2DAD5520000506BE /* dGym */,
+				BE9D51962DAD55E7000506BE /* Views */,
+				BE9D519A2DAD55F3000506BE /* Utils */,
+				BE9D519B2DAD55FA000506BE /* Storage */,
+				BE9D519C2DAD5601000506BE /* ViewModels */,
+				BE9D519E2DAD560F000506BE /* Models */,
 			);
 			name = dGym;
 			packageProductDependencies = (
@@ -109,6 +168,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE9D51922DAD5548000506BE /* Preview Assets.xcassets in Resources */,
+				BE9D51932DAD5548000506BE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +180,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE9D51942DAD5548000506BE /* ContentView.swift in Sources */,
+				BE9D51952DAD5548000506BE /* dGymApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
