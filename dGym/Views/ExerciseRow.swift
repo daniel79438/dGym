@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ExerciseRow: View {
     var exercise: Exercise
+    @Environment(\.modelContext) private var modelContext
     @State private var isExpanded: Bool = false
     
     var body: some View {
@@ -46,6 +47,14 @@ struct ExerciseRow: View {
                 .padding(.top, 5)
                 .padding(.leading)
             }
+        }
+    }
+    
+    func addSet() {
+        if let lastSet = exercise.sets.last {
+            let newSet = ExerciseSet(reps: lastSet.reps, weight: lastSet.weight + 2.5)
+            exercise.sets.append(newSet)
+            try? modelContext.save()
         }
     }
 }

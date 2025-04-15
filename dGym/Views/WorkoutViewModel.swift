@@ -9,15 +9,15 @@ import SwiftUI
 import SwiftData
 
 class WorkoutViewModel: ObservableObject {
-    @Published var selectedWorkoutType: WorkoutType = .upper
+    @Published var selectedWorkoutType: WorkoutType
     @Published var tempExercises: [Exercise] = []
     @Published var customExerciseName: String = ""
-    @Published var selectedExercise: Exercise?
     
     let modelContext: ModelContext
     
-    init(modelContext: ModelContext) {
+    init(modelContext: ModelContext, initialType: WorkoutType = .upper) {
         self.modelContext = modelContext
+        self.selectedWorkoutType = initialType
         loadDefaultExercises()
     }
     

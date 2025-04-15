@@ -17,7 +17,7 @@ struct dGymApp: App {
             RootView()
                 .environmentObject(themeManager)
                 .preferredColorScheme(themeManager.currentTheme == .light ? .light : .dark)
+                .modelContainer(AppModelContainer.shared.container)
         }
-        .modelContainer(ModelContainer.shared)
     }
 }
