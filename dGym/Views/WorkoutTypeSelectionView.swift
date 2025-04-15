@@ -7,32 +7,29 @@
 
 import SwiftUI
 
+
 struct WorkoutTypeSelectionView: View {
+    @EnvironmentObject var themeManager: ThemeManager
+
     var body: some View {
-        NavigationStack{
-            VStack(spacing: 24) {
-                Text("Choose Workout Type")
-                    .font(.largeTitle)
-                    .padding(.top)
-                
-                ForEach(WorkoutType.allCases, id: \.self) { type in
-                    NavigationLink {
-                        AddWorkoutView(preselectedType: type)
-                    } label: {
-                        Text(type.rawValue.capitalized)
-                            .font(.title2)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.blue.opacity(0.8))
-                            .foregroundColor(.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
-                    }
+        VStack(spacing: 24) {
+            ForEach(WorkoutType.allCases, id: \.self) { type in
+                NavigationLink {
+                    AddWorkoutView(preselectedType: type)
+                } label: {
+                    Text(type.rawValue.capitalized)
+                        .font(.title2)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.backgroundColor.opacity(0.8))
+                        .foregroundColor(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
-                
-                Spacer()
             }
-            .padding()
+            
+            Spacer()
         }
+        .padding()
     }
 }
 

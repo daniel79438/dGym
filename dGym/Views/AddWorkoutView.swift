@@ -10,6 +10,7 @@ import SwiftData
 
 // Define the AddWorkoutView struct
 struct AddWorkoutView: View {
+    @EnvironmentObject var themeManager: ThemeManager
     let preselectedType: WorkoutType // This is the workout type selected on the previous screen
     @State private var selectedType: WorkoutType // A state property to hold the selected workout type, initially set to the preselectedType.
 
@@ -37,6 +38,7 @@ struct AddWorkoutView: View {
                 ForEach(WorkoutType.allCases, id: \.self) { type in
                     // Each option in the picker is a workout type (upper, lower, etc.)
                     Text(type.rawValue.capitalized)
+                        .foregroundColor(Color.primaryTextColor)
                 }
             }
             // Section to add and view exercises
@@ -59,6 +61,7 @@ struct AddWorkoutView: View {
                         // Loop through all sets of the current exercise and display the reps and weight.
                         ForEach(exercise.sets, id: \.self) { set in
                             Text("Reps: \(set.reps), Weight: \(set.weight, specifier: "%.1f") kg")
+                                .foregroundColor(Color.primaryTextColor)
                         }
                     }
                 }
@@ -75,6 +78,7 @@ struct AddWorkoutView: View {
         }
         // Set the navigation title based on the selected workout type.
         .navigationTitle("New \(selectedType.rawValue.capitalized) Workout")
+        .background(Color.backgroundColor)
     }
 }
 

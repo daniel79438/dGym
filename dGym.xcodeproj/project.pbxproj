@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		BE9D51922DAD5548000506BE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE9D518C2DAD5548000506BE /* Preview Assets.xcassets */; };
 		BE9D51932DAD5548000506BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE9D518E2DAD5548000506BE /* Assets.xcassets */; };
-		BE9D51942DAD5548000506BE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9D518F2DAD5548000506BE /* ContentView.swift */; };
 		BE9D51952DAD5548000506BE /* dGymApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9D51902DAD5548000506BE /* dGymApp.swift */; };
 /* End PBXBuildFile section */
 
@@ -17,7 +16,6 @@
 		BE9D517B2DAD5520000506BE /* dGym.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dGym.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9D518C2DAD5548000506BE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BE9D518E2DAD5548000506BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BE9D518F2DAD5548000506BE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BE9D51902DAD5548000506BE /* dGymApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dGymApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,13 +86,12 @@
 			isa = PBXGroup;
 			children = (
 				BE9D51902DAD5548000506BE /* dGymApp.swift */,
-				BE9D518F2DAD5548000506BE /* ContentView.swift */,
-				BE9D518E2DAD5548000506BE /* Assets.xcassets */,
 				BE9D519E2DAD560F000506BE /* Models */,
 				BE9D51962DAD55E7000506BE /* Views */,
 				BE9D519C2DAD5601000506BE /* ViewModels */,
 				BE9D519B2DAD55FA000506BE /* Storage */,
 				BE9D519A2DAD55F3000506BE /* Utils */,
+				BE9D518E2DAD5548000506BE /* Assets.xcassets */,
 				BE9D518D2DAD5548000506BE /* Preview Content */,
 			);
 			path = dGym;
@@ -180,7 +177,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE9D51942DAD5548000506BE /* ContentView.swift in Sources */,
 				BE9D51952DAD5548000506BE /* dGymApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,7 +307,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = BackgroundColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"dGym/Preview Content\"";
@@ -340,7 +336,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = BackgroundColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"dGym/Preview Content\"";

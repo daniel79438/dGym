@@ -10,9 +10,13 @@ import SwiftData
 
 @main
 struct dGymApp: App {
+    @StateObject private var themeManager = ThemeManager()
+    
     var body: some Scene {
         WindowGroup {
-            WorkoutTypeSelectionView()
+            RootView()
+                .environmentObject(themeManager)
+                .preferredColorScheme(themeManager.currentTheme == .light ? .light : .dark)
         }
         .modelContainer(for: [Workout.self, Exercise.self, ExerciseSet.self])
     }
