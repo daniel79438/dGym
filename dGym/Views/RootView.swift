@@ -15,9 +15,7 @@ struct RootView: View {
         NavigationStack {
             WorkoutTypeSelectionView()
                 .preferredColorScheme(themeManager.currentTheme == .light ? .light : .dark)
-                .navigationTitle("Choose a Workout")
-                .font(.largeTitle)
-                .padding(.top)
+                .navigationTitle("dGym")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {

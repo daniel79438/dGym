@@ -11,7 +11,7 @@ class AppModelContainer {
     let container: ModelContainer
     
     private init() {
-    let schema = Schema([
+        let schema = Schema([
             Workout.self,
             Exercise.self,
             ExerciseSet.self
@@ -21,12 +21,9 @@ class AppModelContainer {
         
         do {
             container = try ModelContainer(for: schema, configurations: [modelConfiguration])
+            DefaultExercises(context: ModelContext(container))
         } catch {
-            fatalError("Could not create ModelContainer: \(error)")
+            fatalError("😡 FATAL ERROR: Could not create ModelContainer: \(error)")
         }
-}
-
-    var mainContext: ModelContext {
-        ModelContext(container)
     }
 }

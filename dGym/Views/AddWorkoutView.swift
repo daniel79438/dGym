@@ -5,14 +5,17 @@
 //  Created by Daniel Harris on 14/04/2025.
 //
 
+//  AddWorkoutView.swift
+//  dGym
+//  Created by Daniel Harris on 14/04/2025.
+
 import SwiftUI
 import SwiftData
 
-// Define the AddWorkoutView struct
 struct AddWorkoutView: View {
     @EnvironmentObject var themeManager: ThemeManager
-    @Environment(\.modelContext) private var modelContext // Access the model context for saving data to the database (SwiftData).
-    @Environment(\.dismiss) private var dismiss // Allows the view to dismiss itself once the workout is saved.
+    @Environment(\.modelContext) private var modelContext
+    @Environment(\.dismiss) private var dismiss
 
     @StateObject private var viewModel: WorkoutViewModel
     @State private var isAddingCustomExercise: Bool = false
@@ -20,18 +23,17 @@ struct AddWorkoutView: View {
     @Query var availableExercises: [Exercise]
 
     init(preselectedType: WorkoutType) {
-        let viewModel = WorkoutViewModel(modelContext: AppModelContainer.shared.mainContext)
-        viewModel.selectedWorkoutType = preselectedType
-        _viewModel = StateObject(wrappedValue: viewModel)
+        _viewModel = StateObject(wrappedValue: WorkoutViewModel(
+            modelContext: AppModelContainer.shared.container.mainContext,
+            initialType: preselectedType
+        ))
     }
 
     var body: some View {
         Form {
             Section(header: Text("Workout Type")) {
-                
                 Picker("Type", selection: $viewModel.selectedWorkoutType) {
                     ForEach(WorkoutType.allCases, id: \.self) { type in
-                        // Each option in the picker is a workout type (upper, lower, etc.)
                         Text(type.rawValue.capitalized)
                     }
                 }
@@ -47,11 +49,9 @@ struct AddWorkoutView: View {
             
             Section(header: Text("Add Exercise")) {
                 if !isAddingCustomExercise {
-                    List {
-                        ForEach(availableExercisesFiltered, id: \.self) { exercise in
-                            Button(exercise.name) {
-                                viewModel.addExerciseToWorkout(exercise)
-                            }
+                    ForEach(availableExercisesFiltered, id: \.id) { exercise in
+                        Button(exercise.name) {
+                            viewModel.addExerciseToWorkout(exercise)
                         }
                     }
                     
@@ -60,7 +60,7 @@ struct AddWorkoutView: View {
                     }
                 } else {
                     TextField("Exercise Name", text: $viewModel.customExerciseName)
-                        .autocapitalization(.words)
+                        .textInputAutocapitalization(.words)
                     
                     HStack {
                         Button("Cancel") {
@@ -103,9 +103,4 @@ struct AddWorkoutView: View {
     private func deleteExercise(at offsets: IndexSet) {
         viewModel.tempExercises.remove(atOffsets: offsets)
     }
-}
-
-
-#Preview {
-    AddWorkoutView(preselectedType: .upper)
 }

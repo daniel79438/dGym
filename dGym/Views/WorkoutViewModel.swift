@@ -13,16 +13,11 @@ class WorkoutViewModel: ObservableObject {
     @Published var tempExercises: [Exercise] = []
     @Published var customExerciseName: String = ""
     
-    let modelContext: ModelContext
+    private weak var modelContextRef: ModelContext?
     
     init(modelContext: ModelContext, initialType: WorkoutType = .upper) {
-        self.modelContext = modelContext
+        self.modelContextRef = modelContext
         self.selectedWorkoutType = initialType
-        loadDefaultExercises()
-    }
-    
-    func loadDefaultExercises() {
-        DefaultExercises(context: modelContext)
     }
     
     func addExerciseToWorkout(_ exercise: Exercise) {
@@ -32,7 +27,7 @@ class WorkoutViewModel: ObservableObject {
     }
     
     func addCustomExercise() {
-        guard !customExerciseName.isEmpty else { return }
+        guard !customExerciseName.isEmpty, let modelContext = modelContextRef else { return }
         
         let newExercise = Exercise(name: customExerciseName, type: selectedWorkoutType)
         modelContext.insert(newExercise)
@@ -45,6 +40,8 @@ class WorkoutViewModel: ObservableObject {
     }
     
     func saveWorkout() {
+        guard let modelContext = modelContextRef else { return }
+        
         let newWorkout = Workout(type: selectedWorkoutType, exercises: tempExercises)
         modelContext.insert(newWorkout)
         try? modelContext.save()

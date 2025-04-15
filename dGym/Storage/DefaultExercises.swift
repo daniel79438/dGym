@@ -36,8 +36,14 @@ func DefaultExercises(context: ModelContext) {
         Exercise(name: "Rowing", type: .cardio)
     ]
     
-    defaultExercises.forEach { context.insert($0) }
+    for exercise in defaultExercises {
+        context.insert(exercise)
+    }
     
-    try? context.save()
-    UserDefaults.standard.set(true, forKey: "DefaultExercisesLoaded")
+    do {
+        try context.save()
+        UserDefaults.standard.set(true, forKey: "DefaultExercisesLoaded")
+    } catch {
+        print("😡 ERROR: Saving default exercises failed: \(error)")
+    }
 }
