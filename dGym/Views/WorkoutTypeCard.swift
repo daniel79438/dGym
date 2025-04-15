@@ -11,10 +11,10 @@ struct WorkoutTypeCard: View {
     let type: WorkoutType
     let count: Int
     
-    init(type: WorkoutType, count: Int) {
-        self.type = type
-        self.count = count
-    }
+//    init(type: WorkoutType, count: Int) {
+//        self.type = type
+//        self.count = count
+//    }
     
     var body: some View {
         HStack {

@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ExerciseRow: View {
-    var exercise: Exercise
+    
     @Environment(\.modelContext) private var modelContext
+    @ObservedObject var exercise: Exercise
     @State private var isExpanded: Bool = false
     
     var body: some View {

@@ -15,7 +15,9 @@ struct dGymApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
-                .modelContainer(AppModelContainer.shared.container)
+                .environmentObject(themeManager)
+                .preferredColorScheme(themeManager.currentTheme == .light ? .light : .dark)
         }
+        .modelContainer(ModelContainer.shared)
     }
 }

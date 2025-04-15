@@ -23,11 +23,16 @@ struct AddWorkoutView: View {
     @Query var availableExercises: [Exercise]
 
     init(preselectedType: WorkoutType) {
-        _viewModel = StateObject(wrappedValue: WorkoutViewModel(
-            modelContext: AppModelContainer.shared.container.mainContext,
-            initialType: preselectedType
-        ))
+        let viewModel = WorkoutViewModel(modelContext: ModelContainer.shared.mainContext)
+        viewModel.selectedWorkoutType = preselectedType
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
+    
+//    init(preselectedType: WorkoutType) {
+//        _viewModel = StateObject(wrappedValue: WorkoutViewModel(modelContext: ModelContainer.shared.mainContext))
+//        viewModel.selectedWorkoutType = preselectedType
+    
+//    }
 
     var body: some View {
         Form {

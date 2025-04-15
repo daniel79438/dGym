@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class ExerciseSet {
+class ExerciseSet: ObservableObject {
     @Attribute(.unique) var id: UUID = UUID()
     var reps: Int
     var weight: Double

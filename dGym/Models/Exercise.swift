@@ -10,7 +10,7 @@ import SwiftData
 
 
 @Model
-final class Exercise: Identifiable {
+final class Exercise: Identifiable, ObservableObject {
     @Attribute(.unique) var id: UUID = UUID()
     var name: String
     var sets: [ExerciseSet]
