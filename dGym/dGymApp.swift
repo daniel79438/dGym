@@ -18,6 +18,6 @@ struct dGymApp: App {
                 .environmentObject(themeManager)
                 .preferredColorScheme(themeManager.currentTheme == .light ? .light : .dark)
         }
-        .modelContainer(for: [Workout.self, Exercise.self, ExerciseSet.self])
+        .modelContainer(ModelContainer.shared)
     }
 }

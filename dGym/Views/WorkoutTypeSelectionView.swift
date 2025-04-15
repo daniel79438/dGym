@@ -10,29 +10,56 @@ import SwiftUI
 
 struct WorkoutTypeSelectionView: View {
     @EnvironmentObject var themeManager: ThemeManager
+    @Query var workouts: [Workout]
 
     var body: some View {
+        ScrollView {
         VStack(spacing: 24) {
             ForEach(WorkoutType.allCases, id: \.self) { type in
                 NavigationLink {
                     AddWorkoutView(preselectedType: type)
                 } label: {
-                    Text(type.rawValue.capitalized)
-                        .font(.title2)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.backgroundColor.opacity(0.8))
-                        .foregroundColor(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                    WorkoutTypeCard(type.type, count: workoutCount(for: type))
+                }
                 }
             }
-            
-            Spacer()
-        }
-        .padding()
-    }
-}
 
-#Preview {
+        .padding()
+            
+            if !workouts.isEmpty {
+                recentWorkoutsSection
+            }
+    }
+        .background(Color.backgroundColor.opacity(0.1))
+        .navigationTitle("dGym")
+}
+    
+    private var recentWOrkoutsSection: some View {
+        VStack(alignment: .leading) {
+            Text("Recent Workouts")
+                .font(.headline)
+                .padding([.leading, .top])
+            
+            ForEach(recentWorkouts) { workout in
+                WorkoutRow(workout: workout)
+            }
+        }
+    }
+    
+    private var recentWorkouts: [Workout] {
+        Array(workouts.sorted { $0.date > $1.date }.prefix(5))
+    }
+
+    private func workoutCount(for type: WorkoutType) -> Int {
+        workouts.filter { $0.type == type }.count
+    }
+    
+    private func workoutCount(for type: WorkoutType) -> Int {
+        workouts.filter { $0.type == type }.count
+    }
+    }
+
+    
+    #Preview {
     WorkoutTypeSelectionView()
 }
