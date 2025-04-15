@@ -12,9 +12,11 @@ import SwiftData
 class Exercise {
     var name: String
     var sets: [ExerciseSet]
+    var type: WorkoutType
     
-    init(name: String, sets: [ExerciseSet] = []) {
+    init(name: String, type: WorkoutType, sets: [ExerciseSet] = []) {
         self.name = name
+        self.type = type
         self.sets = sets
     }
 }

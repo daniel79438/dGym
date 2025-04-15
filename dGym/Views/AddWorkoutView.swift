@@ -17,9 +17,12 @@ struct AddWorkoutView: View {
     
     @Environment(\.modelContext) private var modelContext // Access the model context for saving data to the database (SwiftData).
     @Environment(\.dismiss) private var dismiss // Allows the view to dismiss itself once the workout is saved.
-    
-    @State private var tempExercises: [Exercise] = [] // This holds the exercises that the user is adding in this workout session.
 
+    @Query var availableExercises: [Exercise]
+    @State private var selectedExerciseName: String = ""
+    @State private var isAddingCustomExercise: Bool = false
+    @State private var customExerciseName: String = ""
+    @State private var tempExercises: [Exercise] = []
 
     // Custom init to pass the preselected workout type from the previous screen.
     init(preselectedType: WorkoutType) {
@@ -42,28 +45,35 @@ struct AddWorkoutView: View {
                 }
             }
             // Section to add and view exercises
-            Section(header: Text("Exercises")) {
-                // Button to add a new exercise to the workout
-                Button("Add Exercise") {
-                    // Create a dummy exercise set to start with.
-                    let set = ExerciseSet(reps: 10, weight: 50)
-                    // Create a new exercise and add the set to it.
-                    let exercise = Exercise(name: "Bench Press", sets: [set])
-                    // Append the new exercise to the temporary list of exercises.
-                    tempExercises.append(exercise)
-                }
-                
+            Section(header: Text("Add Exercise")) {
+                Picker("Select Exercise", selection: $selectedExerciseName) {
                 // Loop through the exercises added so far.
-                ForEach(tempExercises, id: \.self) { exercise in
-                    VStack(alignment: .leading) {
-                        // Display the exercise name (e.g., "Bench Press").
-                        Text("Exercise: \(exercise.name)")
-                        // Loop through all sets of the current exercise and display the reps and weight.
-                        ForEach(exercise.sets, id: \.self) { set in
-                            Text("Reps: \(set.reps), Weight: \(set.weight, specifier: "%.1f") kg")
-                                .foregroundColor(Color.primaryTextColor)
-                        }
+                    ForEach(availableExercises, id: \.self) { exercise in
+                        Text(exercise.name).tag(exercise.name)
                     }
+                    Text("Add Exercise").tag("Other")
+                }
+                .onChange(of: selectedExerciseName) {
+                    isAddingCustomExercise = selectedExerciseName == "Other"
+                }
+                if isAddingCustomExercise {
+                    TextField("Custom Exercise Name", text: $customExerciseName)
+                }
+                Button("Add Exercise") {
+                    let nameToUse = isAddingCustomExercise ? customExerciseName : selectedExerciseName
+                    guard !nameToUse.isEmpty else { return }
+                    
+                    if isAddingCustomExercise && !availableExercises.contains(where: { $0.name.lowercased() == nameToUse.lowercased() }) {
+                        let newExercise = Exercise(name: nameToUse)
+                        modelContext.insert(newExercise)
+                    }
+                    let set = ExerciseSet(reps: 6, weight: 50)
+                    let exercise = Exercise(name: nameToUse, sets: [set])
+                    tempExercises.append(exercise)
+                    
+                    selectedExerciseName = ""
+                    customExerciseName = ""
+                    isAddingCustomExercise = false
                 }
             }
             // Button to save the workout.
