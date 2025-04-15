@@ -10,12 +10,10 @@ import SwiftData
 
 @Model
 class Exercise {
-    var id: UUID
     var name: String
     var sets: [ExerciseSet]
     
-    init(id: UUID, name: String, sets: [ExerciseSet]) {
-        self.id = id
+    init(name: String, sets: [ExerciseSet] = []) {
         self.name = name
         self.sets = sets
     }

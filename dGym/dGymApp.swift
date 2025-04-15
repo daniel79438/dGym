@@ -12,7 +12,7 @@ import SwiftData
 struct dGymApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            WorkoutTypeSelectionView()
         }
         .modelContainer(for: [Workout.self, Exercise.self, ExerciseSet.self])
     }

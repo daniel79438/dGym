@@ -10,14 +10,11 @@ import SwiftData
 
 @Model
 class ExerciseSet {
-    var id: UUID
-    var name: String
+    @Attribute(.unique) var id: UUID = UUID()
     var reps: Int
     var weight: Double
     
-    init(id: UUID, name: String, reps: Int, weight: Double) {
-        self.name = name
-        self.id = id
+    init(reps: Int, weight: Double) {
         self.reps = reps
         self.weight = weight
     }
