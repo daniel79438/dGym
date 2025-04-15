@@ -35,11 +35,6 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
-		BE9D519C2DAD5601000506BE /* ViewModels */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		BE9D519E2DAD560F000506BE /* Models */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Models;
@@ -88,7 +83,6 @@
 				BE9D51902DAD5548000506BE /* dGymApp.swift */,
 				BE9D519E2DAD560F000506BE /* Models */,
 				BE9D51962DAD55E7000506BE /* Views */,
-				BE9D519C2DAD5601000506BE /* ViewModels */,
 				BE9D519B2DAD55FA000506BE /* Storage */,
 				BE9D519A2DAD55F3000506BE /* Utils */,
 				BE9D518E2DAD5548000506BE /* Assets.xcassets */,
@@ -116,7 +110,6 @@
 				BE9D51962DAD55E7000506BE /* Views */,
 				BE9D519A2DAD55F3000506BE /* Utils */,
 				BE9D519B2DAD55FA000506BE /* Storage */,
-				BE9D519C2DAD5601000506BE /* ViewModels */,
 				BE9D519E2DAD560F000506BE /* Models */,
 			);
 			name = dGym;

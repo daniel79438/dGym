@@ -11,6 +11,11 @@ struct WorkoutTypeCard: View {
     let type: WorkoutType
     let count: Int
     
+    init(type: WorkoutType, count: Int) {
+        self.type = type
+        self.count = count
+    }
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -25,7 +30,7 @@ struct WorkoutTypeCard: View {
             
             Spacer()
             
-            Image(systemName: "iconName")
+            Image(systemName: iconName)
                 .font(.system(size: 30))
         }
         .padding()
@@ -48,5 +53,5 @@ struct WorkoutTypeCard: View {
 }
 
 #Preview {
-    WorkoutTypeCard()
+    WorkoutTypeCard(type: .upper, count: 5)
 }

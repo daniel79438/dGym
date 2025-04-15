@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ExerciseRow: View {
-    @ObservedObject var exercise: Exercise
+    var exercise: Exercise
     @State private var isExpanded: Bool = false
     
     var body: some View {
@@ -51,5 +51,7 @@ struct ExerciseRow: View {
 }
 
 #Preview {
-    ExerciseRow()
+    let exercise = Exercise(name: "Bench Press", type: .upper)
+    exercise.sets = [ExerciseSet(reps: 10, weight: 100)]
+    return ExerciseRow(exercise: exercise)
 }

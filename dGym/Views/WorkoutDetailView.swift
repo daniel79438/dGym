@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WorkoutDetailView: View {
-    @ObservedObject var workout: Workout
+    var workout: Workout
     
     var body: some View {
         List {

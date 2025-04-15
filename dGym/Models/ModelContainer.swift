@@ -1,9 +1,6 @@
-//
 //  ModelContainer.swift
 //  dGym
-//
 //  Created by Daniel Harris on 15/04/2025.
-//
 
 import SwiftData
 
@@ -24,7 +21,8 @@ extension ModelContainer {
         }
     }()
     
+    // Fix: Create a computed property that returns a ModelContext for this container
     var mainContext: ModelContext {
-        return mainContext
+        return ModelContext(self)
     }
 }

@@ -19,11 +19,19 @@ struct AddWorkoutView: View {
     
     @Query var availableExercises: [Exercise]
 
-    // Custom init to pass the preselected workout type from the previous screen.
     init(preselectedType: WorkoutType) {
-        _viewModel = StateObject(wrappedValue: WorkoutViewModel(modelContext: modelContainer.shared.mainContext))
+        let viewModel = WorkoutViewModel(modelContext: ModelContainer.shared.mainContext)
         viewModel.selectedWorkoutType = preselectedType
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
+    
+    
+    // Custom init to pass the preselected workout type from the previous screen.
+//    init(preselectedType: WorkoutType) {
+//        _viewModel = StateObject(wrappedValue: WorkoutViewModel(modelContext: ModelContainer.shared.mainContext))
+//        viewModel.selectedWorkoutType = preselectedType
+//    }
+//    
 
     var body: some View {
         Form {
