@@ -39,5 +39,5 @@ func DefaultExercises(context: ModelContext) {
     defaultExercises.forEach { context.insert($0) }
     
     try? context.save()
-    UserDefaults.standard.set(true, forKey: : "DefaultExercisesLoaded")
+    UserDefaults.standard.set(true, forKey: "DefaultExercisesLoaded")
 }
