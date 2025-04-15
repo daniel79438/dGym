@@ -9,7 +9,8 @@ import Foundation
 import SwiftData
 
 @Model
-class Workout {
+final class Workout: Identifiable {
+    @Attribute(.unique) var id: UUID = UUID()
     var date: Date
     var type: WorkoutType
     var exercises: [Exercise]

@@ -51,7 +51,6 @@ struct ExerciseRow: View {
 }
 
 #Preview {
-    let exercise = Exercise(name: "Bench Press", type: .upper)
-    exercise.sets = [ExerciseSet(reps: 10, weight: 100)]
+    let exercise = Exercise(name: "Bench Press", type: .upper, sets: [ExerciseSet(reps: 10, weight: 100)])
     return ExerciseRow(exercise: exercise)
 }

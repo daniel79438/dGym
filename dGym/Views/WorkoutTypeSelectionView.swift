@@ -11,7 +11,7 @@ import SwiftData
 
 struct WorkoutTypeSelectionView: View {
     @EnvironmentObject var themeManager: ThemeManager
-    @Query var workouts: [Workout] //@Query was deleted - check that this is needed because it was throwing an error
+    @Query var workouts: [Workout]
     
     var body: some View {
         ScrollView {
