@@ -8,27 +8,33 @@
 import SwiftUI
 
 struct WorkoutRow: View {
+    @EnvironmentObject var themeManager: ThemeManager
     let workout: Workout
     
     var body: some View {
         NavigationLink(destination: WorkoutDetailView(workout: workout)) {
             HStack {
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 4) {
                     Text(dateFormatter.string(from: workout.date))
                         .font(.headline)
+                        .foregroundColor(themeManager.textColor)
                     
                     Text("\(workout.type.rawValue.capitalized) + \(workout.exercises.count) exercises")
                         .font(.subheadline)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(themeManager.secondaryTextColor)
                 }
                 
                 Spacer()
                 
                 Image(systemName: "chevron.right")
-                    .foregroundColor(.gray)
+                    .foregroundColor(themeManager.accentColor)
             }
             .padding()
-            .background(Color.backgroundColor.opacity(0.5))
+            .background(themeManager.backgroundColor.opacity(0.7))
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(themeManager.accentColor.opacity(0.3), lineWidth: 1)
+            )
             .cornerRadius(8)
             .padding(.horizontal)
         }

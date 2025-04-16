@@ -15,7 +15,11 @@ struct WorkoutTypeSelectionView: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 24) {
+            // Stats View
+            WorkoutStatsView()
+            
+            // Workout Types
+            VStack(spacing: 16) {
                 ForEach(WorkoutType.allCases, id: \.self) { type in
                     NavigationLink {
                         AddWorkoutView(preselectedType: type)
@@ -24,21 +28,21 @@ struct WorkoutTypeSelectionView: View {
                     }
                 }
             }
-            
             .padding()
             
             if !workouts.isEmpty {
                 recentWorkoutsSection
             }
         }
-        .background(Color.backgroundColor.opacity(0.1))
-        .navigationTitle("dGym")
+        .background(themeManager.backgroundColor.opacity(0.95))
+        .foregroundColor(themeManager.textColor)
     }
     
     private var recentWorkoutsSection: some View {
         VStack(alignment: .leading) {
             Text("Recent Workouts")
                 .font(.headline)
+                .foregroundColor(themeManager.accentColor)
                 .padding([.leading, .top])
             
             ForEach(recentWorkouts) { workout in

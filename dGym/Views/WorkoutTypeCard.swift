@@ -8,17 +8,13 @@
 import SwiftUI
 
 struct WorkoutTypeCard: View {
+    @EnvironmentObject var themeManager: ThemeManager
     let type: WorkoutType
     let count: Int
     
-//    init(type: WorkoutType, count: Int) {
-//        self.type = type
-//        self.count = count
-//    }
-    
     var body: some View {
         HStack {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 4) {
                 Text(type.rawValue.capitalized)
                     .font(.title2)
                     .fontWeight(.bold)
@@ -32,12 +28,17 @@ struct WorkoutTypeCard: View {
             
             Image(systemName: iconName)
                 .font(.system(size: 30))
+                .foregroundColor(themeManager.accentColor)
         }
         .padding()
-        .background(Color.backgroundColor.opacity(0.8))
-        .foregroundColor(.primary)
+        .background(themeManager.backgroundColor)
+        .foregroundColor(themeManager.textColor)
         .cornerRadius(12)
         .shadow(radius: 2)
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(themeManager.accentColor.opacity(0.5), lineWidth: 1)
+        )
     }
     
     private var iconName: String {
