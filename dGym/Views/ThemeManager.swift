@@ -17,7 +17,7 @@ class ThemeManager: ObservableObject {
     // Default to system appearance, but save the user's choice in AppStorage
     @AppStorage("selectedTheme") private var selectedTheme: String?
     
-    let accentColor = Color(red: 0.8, green: 0.8, blue: 0.0) // Yellow accent
+    let accentColor = Color(red: 1.0, green: 0.84, blue: 0.0) // Yellow accent
     let darkBackground = Color.black
     let lightBackground = Color.white
     

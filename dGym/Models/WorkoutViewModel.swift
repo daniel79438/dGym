@@ -26,7 +26,7 @@ class WorkoutViewModel: ObservableObject {
      }
     
     func addExerciseToWorkout(_ exercise: Exercise) {
-        let set = ExerciseSet(reps: 6, weight: 50)
+        let set = ExerciseSet(reps: 8, weight: 50)
         let workoutExercise = Exercise(name: exercise.name, type: exercise.type, sets: [set])
         tempExercises.append(workoutExercise)
     }
