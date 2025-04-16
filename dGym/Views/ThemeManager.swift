@@ -7,13 +7,11 @@
 
 import Foundation
 import SwiftUI
-import SwiftData
 
 // Define the theme
 enum AppTheme: String {
     case light, dark
 }
-
 //Store the current theme in AppStorage to persist it
 class ThemeManager: ObservableObject {
     // Default to system appearance, but save the user's choice in AppStorage
@@ -22,7 +20,7 @@ class ThemeManager: ObservableObject {
     let accentColor = Color(red: 0.8, green: 0.8, blue: 0.0) // Yellow accent
     let darkBackground = Color.black
     let lightBackground = Color.white
-
+    
     // A computed property to access the current theme
     var currentTheme: AppTheme {
         get {
@@ -43,6 +41,10 @@ class ThemeManager: ObservableObject {
     }
     
     var backgroundColor: Color {
+        currentTheme == .dark ? .black : .white
+    }
+    
+    var textColor: Color {
         currentTheme == .dark ? .white : .black
     }
     

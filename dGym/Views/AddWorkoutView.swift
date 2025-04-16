@@ -45,7 +45,7 @@ struct AddWorkoutView: View {
                                 .padding(.horizontal, 16)
                                 .frame(maxWidth: .infinity)
                         }
-                        .background(viewModel.selectedWorkoutType == type ? ThemeManager.accentColor : Color.gray.opacity(0.3))
+                        .background(viewModel.selectedWorkoutType == type ? themeManager.accentColor : Color.gray.opacity(0.3))
                         .foregroundColor(viewModel.selectedWorkoutType == type ? .black : themeManager.textColor)
                         .cornerRadius(8)
                     }

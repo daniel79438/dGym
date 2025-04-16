@@ -45,7 +45,7 @@ struct ExerciseRow: View {
                     .padding(.leading, 8)
                 }
                 
-                Button("Add Set") {
+                Button(action: { addSet() }) {
                     HStack {
                         Image(systemName: "plus.circle.fill")
                         Text("Add Set")

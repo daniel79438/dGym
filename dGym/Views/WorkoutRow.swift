@@ -19,7 +19,7 @@ struct WorkoutRow: View {
                         .font(.headline)
                         .foregroundColor(themeManager.textColor)
                     
-                    Text("\(workout.type.rawValue.capitalized) + \(workout.exercises.count) exercises")
+                    Text("\(workout.type.rawValue.capitalized) • \(workout.exercises.count) exercises")
                         .font(.subheadline)
                         .foregroundColor(themeManager.secondaryTextColor)
                 }
